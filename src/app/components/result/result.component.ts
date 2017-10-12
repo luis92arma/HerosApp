@@ -11,6 +11,7 @@ import { HeroesService, Heroe } from '../../servicios/heroes.service';
 export class ResultComponent implements OnInit {
 
   heroes:Heroe[] = []
+  keyWord:string;
 
   constructor(
     private _heroesService: HeroesService,
@@ -21,6 +22,7 @@ export class ResultComponent implements OnInit {
     //this.heroes = this.resultadoHeroes.busquedaHeroe;
     this.activatedRoute.params.subscribe(params =>{
       console.log(params);
+      this.keyWord = params.heroe;
       this.heroes = this._heroesService.buscarHeroes(params.heroe);
       console.log(this.heroes)
     })
